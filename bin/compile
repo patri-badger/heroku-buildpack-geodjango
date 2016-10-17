@@ -223,6 +223,8 @@ bpwatch start dump_cache
   done
 bpwatch stop dump_cache
 
+apt-get install python-mapnik
+
 # ### Fin.
 if [[ ! "$DOCKER_BUILD" ]]; then
 
