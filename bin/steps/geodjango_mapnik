@@ -26,7 +26,7 @@ else
   apt-get $APT_OPTIONS update | indent
   
   echo "Installing python-software-properties" | indent
-  apt-get $APT_OPTIONS -y --force-yes -d install --reinstall python-software-properties | indent
+  apt-get $APT_OPTIONS -y --force-yes -d install --reinstall software-properties-common | indent
   
   echo "Assigning repository mapnik v2.2.0" | indent
   add-apt-repository ppa:mapnik/v2.2.0  
