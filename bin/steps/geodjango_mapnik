@@ -30,6 +30,7 @@ else
   apt-get $APT_OPTIONS update | indent
   echo "Installing python-mapnik" | indent
   apt-get $APT_OPTIONS -y --force-yes -d install --reinstall libmapnik libmapnik-dev mapnik-utils python-mapnik | indent  
+  echo "Installing apt-get deb packages" | indent
   for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
     dpkg -x $DEB $BUILD_DIR/.heroku/
   done
