@@ -182,6 +182,8 @@ source $BIN_DIR/steps/cryptography
 # GDAL support.
 source $BIN_DIR/steps/gdal
 
+source $BIN_DIR/steps/geodjango_mapnik
+
 # Install dependencies with Pip.
 source $BIN_DIR/steps/pip-install
 
@@ -222,8 +224,6 @@ bpwatch start dump_cache
     cp -R $dir $CACHE_DIR/
   done
 bpwatch stop dump_cache
-
-apt-get -y --force-yes -d install --reinstall python-mapnik
 
 # ### Fin.
 if [[ ! "$DOCKER_BUILD" ]]; then
