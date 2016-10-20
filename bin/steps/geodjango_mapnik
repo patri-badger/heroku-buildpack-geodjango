@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# This script extends the GDAL build step of the
+# [**GeoDjango Buildpack**](https://github.com/dulaccc/heroku-buildpack-geodjango)
+# compiler, in [**GeoDjango Buildpack by Badger**](https://github.com/patri-badger/heroku-buildpack-geodjango/).
+#
+# A [buildpack](http://devcenter.heroku.com/articles/buildpacks) is an
+# adapter between a Python application and Heroku's runtime.
+#
+# This script is invoked by [`bin/compile`](/).
+
+# Syntax sugar.
+
+if [ -e $CACHE_DIR/.mapnik ]; then
+  echo 'Python Mapnik is already installed.' | indent
+else  
+  echo "Installing python-mapnik" | indent
+  apt-get update | indent
+  apt-get -y --force-yes -d install --reinstall python-mapnik | indent  
+  touch $CACHE_DIR/.mapnik | indent
+  echo "Mapnik installed." | indent
+fi
