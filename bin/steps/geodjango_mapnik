@@ -26,7 +26,6 @@ else
   apt-get $APT_OPTIONS update | indent
   apt-get $APT_OPTIONS -y --force-yes -d install --reinstall python-mapnik | indent  
   for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
-    topic "Installing $(basename $DEB)"
     dpkg -x $DEB $BUILD_DIR/.heroku/
   done
   touch $CACHE_DIR/.mapnik | indent
