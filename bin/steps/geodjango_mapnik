@@ -29,7 +29,7 @@ else
     dpkg -x $DEB $BUILD_DIR/.heroku/
   done
   echo "/app/.heroku/usr/lib" >> /etc/ld.so.conf | indent
-  ldconfig | indent
+  /sbin/ldconfig | indent
   
   touch $CACHE_DIR/.mapnik | indent
   echo "Mapnik installed." | indent
