@@ -40,7 +40,7 @@ if [ ! "$SKIP_INSTALL" ]; then
     
     tar xvfz Python-2.7.7.tgz &> /dev/null
     cd Python-2.7.7
-    ./configure --enable-shared --prefix=.heroku/python --enable-unicode=ucs4
+    ./configure --enable-shared --prefix=$APP_DIR/.heroku/python --enable-unicode=ucs4
     make
     make install
     
