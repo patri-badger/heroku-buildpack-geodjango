@@ -22,10 +22,6 @@ APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state
 if [ -e $CACHE_DIR/.mapnik ]; then
   echo 'Python Mapnik is already installed.' | indent
 else  
-  echo "Installing python-software-properties" | indent
-  apt-get install -y python-software-properties 
-  echo "Adding to repository mapnik 2.2.0" | indent
-  add-apt-repository ppa:mapnik/v2.2.0 | indent
   echo "Updating apt-get" | indent
   apt-get $APT_OPTIONS update | indent
   echo "Installing python-mapnik" | indent
