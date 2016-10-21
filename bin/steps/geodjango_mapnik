@@ -28,7 +28,7 @@ else
   apt-get $APT_OPTIONS update | indent
   
   echo "Installing python-software-properties" | indent
-  apt-get $APT_OPTIONS -y --force-yes -d install --reinstall software-properties-common python-software-properties | indent
+  apt-get $APT_OPTIONS -y --force-yes -d install --reinstall apt-file software-properties-common python-software-properties | indent
   
   echo "List deb packages" | indent
   ls -1 $APT_CACHE_DIR/archives
@@ -46,6 +46,14 @@ else
 
   mkdir -p "$APT_CACHE_DIR/archives/partial"
   mkdir -p "$APT_STATE_DIR/lists/partial"
+  
+  echo "Updating apt-file" | indent
+  apt-file update
+  
+  apt-file search add-apt-repository
+
+  echo "Assigning repository mapnik v2.2.0" | indent
+  add-apt-repository ppa:mapnik/v2.2.0  
   
   echo "Installing python-mapnik" | indent
   apt-get $APT_OPTIONS -y --force-yes -d install --reinstall libmapnik libmapnik-dev mapnik-utils python-mapnik | indent  
