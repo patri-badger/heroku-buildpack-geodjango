@@ -28,7 +28,7 @@ else
   apt-get $APT_OPTIONS update | indent
   
   echo "Installing python-software-properties" | indent
-  apt-get $APT_OPTIONS -y --force-yes -d install --reinstall apt-file software-properties-common python-software-properties | indent
+  apt-get $APT_OPTIONS -y --force-yes -d install --reinstall software-properties-common python-software-properties | indent
   
   echo "List deb packages" | indent
   ls -1 $APT_CACHE_DIR/archives
