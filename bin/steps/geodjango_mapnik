@@ -46,11 +46,6 @@ else
 
   mkdir -p "$APT_CACHE_DIR/archives/partial"
   mkdir -p "$APT_STATE_DIR/lists/partial"
-  
-  echo "Updating apt-file" | indent
-  apt-file update
-  
-  apt-file search add-apt-repository
 
   echo "Assigning repository mapnik v2.2.0" | indent
   add-apt-repository ppa:mapnik/v2.2.0  
