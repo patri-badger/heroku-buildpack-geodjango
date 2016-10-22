@@ -35,11 +35,12 @@ else
     dpkg -x $DEB $BUILD_DIR/.heroku/
   done
   
-  default_path="/usr/lib"
-  default_path="${default_path//\//\\/}" 
-  real_path="$BUILD_DIR/.heroku/usr/lib"
-  real_path="${real_path//\//\\/}" 
-  sed -i 's/${default_path}/${real_path}/g' $BUILD_DIR/.heroku/usr/lib/python2.7/dist-packages/mapnik/paths.py
+  echo "Modifying mapnik paths file" | indent
+  default_path="/usr/lib" | indent
+  default_path="${default_path//\//\\/}" | indent
+  real_path="$BUILD_DIR/.heroku/usr/lib" | indent
+  real_path="${real_path//\//\\/}" | indent
+  sed -i 's/${default_path}/${real_path}/g' $BUILD_DIR/.heroku/usr/lib/python2.7/dist-packages/mapnik/paths.py | indent
   
   touch $CACHE_DIR/.mapnik | indent
   echo "Mapnik installed." | indent
