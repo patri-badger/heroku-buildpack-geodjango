@@ -27,6 +27,19 @@ else
   echo "Updating apt-get" | indent
   apt-get $APT_OPTIONS update | indent
   
+  echo "Installing postgresql" | indent
+  apt-get $APT_OPTIONS -y --force-yes -d install postgresql-9.5 postgresql-server-dev-9.5 postgresql-contrib-9.5 postgresql-9.5-postgis
+  
+  echo "Installing apt-get deb packages" | indent
+  for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
+    dpkg -x $DEB $BUILD_DIR/.heroku/
+  done
+  
+  echo "Deleting apt-get cache dir" | indent
+  rm -fr "$CACHE_DIR/apt"
+  mkdir -p "$APT_CACHE_DIR/archives/partial"
+  mkdir -p "$APT_STATE_DIR/lists/partial"  
+  
   echo "Installing python-mapnik" | indent
   apt-get $APT_OPTIONS -y --force-yes -d install --reinstall python-mapnik | indent  
   
