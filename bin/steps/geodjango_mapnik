@@ -36,10 +36,10 @@ else
   done
   
   echo "Modifying mapnik paths file" 
-  default_path="\/usr\/lib" 
-  real_path="\/app\/.heroku\/usr\/lib" 
-  echo "s/${default_path}/${real_path}/g"
-  sed -i 's/${default_path}/${real_path}/g' $BUILD_DIR/.heroku/usr/lib/python2.7/dist-packages/mapnik/paths.py 
+  default_path="\/usr\/lib"
+  real_path="\/app\/.heroku\/usr\/lib"
+  sed -i "s/${default_path}/${real_path}/g" /app/.heroku/usr/lib/python2.7/dist-packages/mapnik/paths.py
+  cat /app/.heroku/usr/lib/python2.7/dist-packages/mapnik/paths.py
   
   touch $CACHE_DIR/.mapnik | indent
   echo "Mapnik installed." | indent
