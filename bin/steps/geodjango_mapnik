@@ -28,7 +28,7 @@ else
   apt-get $APT_OPTIONS update | indent
   
   echo "Installing postgresql" | indent
-  apt-get $APT_OPTIONS -y --force-yes -d install postgresql-9.5 postgresql-server-dev-9.5 postgresql-contrib-9.5 postgresql-9.5-postgis
+  apt-get $APT_OPTIONS -y --force-yes -d install postgresql-9.1 postgresql-server-dev-9.1 postgresql-contrib-9.1 postgresql-9.1-postgis
   
   echo "Installing apt-get deb packages" | indent
   for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
